@@ -1,0 +1,14 @@
+box: openjdk:8-jdk
+build:
+  steps:
+    - script:
+      name: Download CxCLI
+      code: |
+        wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.0.zip
+        unzip ~/cxcli.zip -d ~/cxcli
+        rm -rf ~/cxcli.zip
+        chmod +x ~/cxcli/runCxConsole.sh
+    - script:
+      name: Run Checkmarx Scan
+      code: |
+        ~/cxcli/runCxConsole.sh Scan -CxServer $CX_SERVER -CxUser $CX_USER -CxPassword $CX_PASSWORD -ProjectName "$CX_TEAM\\$WERCKER_GIT_REPOSITORY-$WERCKER_GIT_BRANCH" -preset "$CX_PRESET" -LocationType folder -LocationPath $WERCKER_SOURCE_DIR -SASTHigh $CX_HIGH -SASTMedium $CX_MEDIUM -SASTLow $CX_LOW -ReportXML results-$WERCKER_GIT_REPOSITORY-$WERCKER_GIT_BRANCH.xml -ReportPDF results-$WERCKER_GIT_REPOSITORY-$WERCKER_GIT_BRANCH.pdf -Comment "git $WERCKER_GIT_BRANCH@$WERCKER_GIT_COMMIT" -verbose
