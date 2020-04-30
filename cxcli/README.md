@@ -10,6 +10,6 @@ Project | Description
 [Buddy](Buddy) | Allows to run a Checkmarx Scan using the YML file of Buddy (https://buddy.works/) and take advantage of CLI as well.
 [CircleCI](CircleCI) | Allows to run a Checkmarx Scan using the YML file of Circle CI (https://circleci.com/) and take advantage of CLI as well.
 [DroneCI](DroneCI) | run a Checkmarx Scan using the YML file of Drone CI (https://cloud.drone.io/) and take advantage of CLI as well.
-[GitHubActions](GitHubActions) | Allows to run a Checkmarx Scan using the YML file of Github Actions (https://github.com/features/actions) and take advantage of CLI as well.
+[GithubActions](GithubActions) | Allows to run a Checkmarx Scan using the YML file of Github Actions (https://github.com/features/actions) and take advantage of CLI as well.
 
 
