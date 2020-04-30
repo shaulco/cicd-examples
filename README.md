@@ -10,3 +10,4 @@ Project | Description
 [CxCLI](cxcli) | CxCLI CI/CD Integration examples.
 [CxFlow](cxflow) | CxFlow CI/CD Integration examples.
 [Wercker](wercker) | Wercker Checkmarx Wercker CI Integration via YML (CLI)
+[TravisCI](travisci) | Checkmarx Travis CI Integration via YML (CLI)
