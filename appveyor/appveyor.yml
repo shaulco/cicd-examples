@@ -1,0 +1,14 @@
+version: 1.0.{build}
+os: Visual Studio 2015
+before_build:
+- cmd: appveyor DownloadFile https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.0.zip -FileName cxcli.zip
+- cmd: unzip cxcli.zip -d cxcli
+- cmd: rm -rf cxcli.zip
+- cmd: chmod +x cxcli/runCxConsole.cmd
+build_script:
+- cmd: cxcli/runCxConsole.cmd Scan -CxServer %CX_SERVER% -CxUser %CX_USER% -CxPassword %CX_PASSWORD% -ProjectName "%CX_TEAM%\%APPVEYOR_PROJECT_NAME%-%APPVEYOR_REPO_BRANCH%" -preset "%CX_PRESET%" -LocationType folder -LocationPath %APPVEYOR_BUILD_FOLDER% -SASTHigh %CX_HIGH% -SASTMedium %CX_MEDIUM% -SASTLow %CX_LOW% -ReportXML %APPVEYOR_BUILD_FOLDER%/results.xml -ReportPDF %APPVEYOR_BUILD_FOLDER%/results.pdf -Comment "git %APPVEYOR_REPO_BRANCH%@%APPVEYOR_REPO_COMMIT%" -verbose
+artifacts:
+  - path: results.pdf
+    name: results.pdf
+  - path: results.xml
+    name: results.xml
