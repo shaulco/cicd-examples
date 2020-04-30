@@ -1,0 +1,21 @@
+- pipeline: "Checkmarx Scan"
+  trigger_mode: "ON_EVERY_PUSH"
+  ref_name: "master"
+  ref_type: "BRANCH"
+  trigger_condition: "ALWAYS"
+  actions:
+  - action: "Run Checkmarx Scan"
+    type: "BUILD"
+    working_directory: "/buddy/cxbuddy"
+    docker_image_name: "library/java"
+    docker_image_tag: "latest"
+    execute_commands:
+    - "~/cxcli/runCxConsole.sh Scan -CxServer $CX_SERVER -CxUser $CX_USER -CxPassword $CX_PASSWORD -ProjectName \"$CX_TEAM\\\\$BUDDY_PROJECT_NAME-$BUDDY_EXECUTION_BRANCH\" -preset \"$CX_PRESET\" -LocationType folder -LocationPath /buddy/cxbuddy -SASTHigh $CX_HIGH -SASTMedium $CX_MEDIUM -SASTLow $CX_LOW -ReportXML /buddy/cxbuddy/results-$BUDDY_PROJECT_NAME-$BUDDY_EXECUTION_BRANCH.xml -ReportPDF /buddy/cxbuddy/results-$BUDDY_PROJECT_NAME-$BUDDY_EXECUTION_BRANCH.pdf -Comment \"git $BUDDY_EXECUTION_BRANCH@$BUDDY_EXECUTION_ID\" -verbose"
+    setup_commands:
+    - "wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.0.zip"
+    - "unzip ~/cxcli.zip -d ~/cxcli"
+    - "rm -rf cxcli.zip"
+    - "chmod +x ~/cxcli/runCxConsole.sh"
+    mount_filesystem_path: "/buddy/cxbuddy"
+    shell: "BASH"
+    trigger_condition: "ALWAYS"

@@ -1,0 +1,24 @@
+kind: pipeline
+type: docker
+name: cxscan
+
+steps:
+- name: Run Checkmarx Scan
+  image: openjdk:11.0.5
+  commands:
+    - wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.0.zip 
+    - unzip ~/cxcli.zip -d ~/cxcli 
+    - rm -rf ~/cxcli.zip 
+    - chmod +x ~/cxcli/runCxConsole.sh
+    - export CX_PROJECT_NAME=$(basename "$DRONE_REPO")
+    - ~/cxcli/runCxConsole.sh Scan -CxServer $CX_SERVER -CxUser $CX_USER -CxPassword $CX_PASSWORD -ProjectName "$CX_TEAM$CX_PROJECT_NAME-$DRONE_BRANCH" -preset "$CX_PRESET" -LocationType folder -LocationPath $DRONE_WORKSPACE -SASTHigh $CX_HIGH -SASTMedium $CX_MEDIUM -SASTLow $CX_LOW -ReportXML results-$CX_PROJECT_NAME-$DRONE_BRANCH.xml -ReportPDF results-$CX_PROJECT_NAME-$DRONE_BRANCH.pdf -Comment "git $DRONE_BRANCH@$DRONE_COMMIT" -verbose
+  environment:
+    CX_SERVER: https://cxprivatecloud.checkmarx.net
+    CX_USER: Miguel.Freitas@checkmarx.com
+    CX_TEAM: \\CxServer\\SP\\EMEA\\__psteam\\
+    CX_PRESET: Checkmarx Default
+    CX_HIGH: 0
+    CX_MEDIUM: 0
+    CX_LOW: 0
+    CX_PASSWORD:
+      from_secret: cx_password
