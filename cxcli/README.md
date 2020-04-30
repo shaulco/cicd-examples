@@ -6,4 +6,4 @@ This is a set of example CI/CD Pipeline integrations with Checkmarx levaraging t
 
 Project | Description
 --------|------------
-[XXXXX](XXXXXX) | XXXXX Pipeline integration.
+[GitHubActions](GitHubActions) | Run a Checkmarx Scan using the YML file of Github Actions (https://github.com/features/actions) and take advantage of CLI as well..
