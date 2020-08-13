@@ -6,4 +6,4 @@ This is a set of example CI/CD Pipeline integrations with Checkmarx levaraging C
 
 Project | Description
 --------|------------
-[XXXXX](XXXXXX) | XXXXX Pipeline integration.
+[YML-templates](YML-templates) | This is a set of example yml file configurations used with CxFlow to integrate with Checkmarx.
