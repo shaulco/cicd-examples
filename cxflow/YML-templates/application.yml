@@ -33,11 +33,12 @@ cxflow:
   codebash-url: https://checkmarx-demo.codebashing.com/courses/
 
 checkmarx:
+  version: 9.0
   username: ###<cxsast_username>###
   password: ###<cxsast_password>###
   client-secret: 014DF517-39D1-4453-B7B3-9930C563627C
   base-url: http://localhost
-  team: \CxServer\SP\Company
+  team: /CxServer
   url: ${checkmarx.base-url}/cxrestapi
   #scan-preset: Checkmarx Default
   #incremental: true
