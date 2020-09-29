@@ -13,6 +13,9 @@ cxflow:
     # - GitLab
     # - Rally
     # - Json
+  enabled-vulnerability-scanners:
+  - sast
+  # - sca
   branches:
   - master
   - dev\w+
