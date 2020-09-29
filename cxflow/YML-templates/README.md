@@ -2,7 +2,11 @@
 
 This is a set of example yml file configurations used with CxFlow to integrate with Checkmarx.
 
-All files have configuration examples for the following
+The application.yml file contains configuration examples for the following
+
+#### Checkmarx 
+* CxSAST
+* CxSCA
 
 #### Webhooks
 * Azure
@@ -12,11 +16,12 @@ All files have configuration examples for the following
 
 #### Issue Tracking
 * Azure
-* GitHUb
+* GitHub
 * GitLab
 * JIRA
 
 **Warning** The current examples use http communication & the webtokens shoiuld be changed to something more secure.
+**Version** CxSAST 8.9 is no longer officially supported and the application-8.9.yml should be used for reference only.
 
 File | Description
 --------|------------

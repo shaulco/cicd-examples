@@ -28,12 +28,13 @@ cxflow:
   # - Urgent
   # - Confirmed
   # - To Verify
-  #mitre-url: https://cwe.mitre.org/data/definitions/%s.html
+  mitre-url: https://cwe.mitre.org/data/definitions/%s.html
   #wiki-url: https://custodela.atlassian.net/wiki/spaces/AS/pages/79462432/Remediation+Guidance
   codebash-url: https://checkmarx-demo.codebashing.com/courses/
 
 checkmarx:
   version: 9.0
+  scope: access_control_api sast_rest_api
   username: ###<cxsast_username>###
   password: ###<cxsast_password>###
   client-secret: 014DF517-39D1-4453-B7B3-9930C563627C
@@ -47,6 +48,14 @@ checkmarx:
   sdk-url: ${checkmarx.base-url}/cxwebinterface/SDK/CxSDKWebService.asmx
   portal-wsdl: ${checkmarx.base-url}/Portal/CxWebService.asmx?wsdl
   sdk-wsdl: ${checkmarx.base-url}/SDK/CxSDKWebService.asmx?wsdl
+
+sca:
+  appUrl: https://sca.scacheckmarx.com
+  apiUrl: https://sca.scacheckmarx.com
+  accessControlUrl: https://platform.checkmarx.net
+  tenant:  ###<SCA Account Name>###
+  username: ###<SCA non-SSO username>###
+  password: ###<SCA password>###
 
 azure:
   webhook-token: cxflow:12345
