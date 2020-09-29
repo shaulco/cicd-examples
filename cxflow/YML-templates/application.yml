@@ -49,13 +49,13 @@ checkmarx:
   portal-wsdl: ${checkmarx.base-url}/Portal/CxWebService.asmx?wsdl
   sdk-wsdl: ${checkmarx.base-url}/SDK/CxSDKWebService.asmx?wsdl
 
-sca:
-  appUrl: https://sca.scacheckmarx.com
-  apiUrl: https://sca.scacheckmarx.com
-  accessControlUrl: https://platform.checkmarx.net
-  tenant:  ###<SCA Account Name>###
-  username: ###<SCA non-SSO username>###
-  password: ###<SCA password>###
+#sca:
+#  appUrl: https://sca.scacheckmarx.com
+#  apiUrl: https://sca.scacheckmarx.com
+#  accessControlUrl: https://platform.checkmarx.net
+#  tenant:  ###<SCA Account Name>###
+#  username: ###<SCA non-SSO username>###
+#  password: ###<SCA password>###
 
 azure:
   webhook-token: cxflow:12345
