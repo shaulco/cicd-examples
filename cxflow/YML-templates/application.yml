@@ -59,6 +59,8 @@ checkmarx:
 #  tenant:  ###<SCA Account Name>###
 #  username: ###<SCA non-SSO username>###
 #  password: ###<SCA password>###
+#  filter-severity:
+#  - High
 
 azure:
   webhook-token: cxflow:12345
