@@ -3,7 +3,7 @@ server:
 logging:
   file: flow.log
 
-cxflow:
+cx-flow:
   bug-tracker: JIRA
   #bug-tracker-impl:
     # - Azure
